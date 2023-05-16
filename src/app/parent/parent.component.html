@@ -1,0 +1,5 @@
+<app-game-control (intervalFired)="onTick($event)"></app-game-control>
+<div *ngFor="let number of numbers">
+    <app-odd [number]="number"></app-odd>
+    <app-even [number]=" number"></app-even>
+</div>

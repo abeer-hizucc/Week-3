@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <button 
+            class = "btn btn-primary"
+            (click) = "isOddOreven()"
+            >
+            {{numberSelection}}
+
+            </button>
+            <br><br>
+            <!-- <ul class="list-group" *ngIf="onlyOdd"then oddElement else evenElement>
+                <li class = "list-group-item"*ngFor="let odd of oddNumbers">
+                    {{odd}}
+              
+                </li></ul> -->
+                
+            <ng-template *ngIf="onlyOdd; then oddElement; else evenElement"></ng-template>
+            
+            <ng-template #oddElement>
+             
+            <ul class = "list-group">
+            <li [ngClass]="{CheckFont:odd%3!=0}"
+            [ngStyle]="{backgroundColor:odd%3==0?'magenta':'transparent'}" 
+            class = "list-group-item" *ngFor="let odd of oddNumbers">
+                {{odd}}
+            </li>
+            </ul>
+       
+            </ng-template>
+           <ng-template #evenElement>
+            
+            <ul class = "list-group">
+            <li [ngClass]="{CheckFont:even%4!=0}" 
+            [ngStyle]="{backgroundColor:even%4==0? 'lightblue':'transparent'}" 
+            class = "list-group-item"
+             *ngFor="let even of evenNumbers">
+                {{even}}
+            </li>
+        </ul>
+  
+           </ng-template>
+
+            <p appBasicHighlight>This is the example of custom directive</p>
+            <br><br>
+            <p appBetterHighlight>This is the example of custom directive with renderer2</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputField">Type your name:</label>
+        <input type="text" class = "form-control" id = "myInput" #myInput (input)="updateInputValue(myInput.value)">
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12">
+            <p appVulnerableDirective> Move the cursor on me to test me</p>
+        </div>
+        
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <button 
+            class = "btn btn-primary"
+            (click) = "isOddOreven()"
+            >
+            Change the value for using Unless driective
+
+            </button>
+            <br><br>
+            
+            
+             
+            <ul class = "list-group" *appUnless="!onlyOdd">
+            <li [ngClass]="{CheckFont:odd%5!=0}"
+            [ngStyle]="{backgroundColor:odd%5==0?'magenta':'transparent'}" 
+            class = "list-group-item" *ngFor="let odd of oddNumbers">
+                {{odd}}
+            </li>
+            </ul>
+        
+          
+           
+          
+      
+       
+          
+        </div>
+    </div>
+</div>
+<app-directive-example>
+    
+</app-directive-example>
